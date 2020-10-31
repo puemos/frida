@@ -1,48 +1,37 @@
-  <header class="">
-    <div class="max-w-7xl mx-auto py-6">
-      <h1 class="text-3xl font-bold leading-tight text-gray-900">
-        Feedback
-      </h1>
-    </div>
-  </header>
-
 <div class="sticky grid grid-cols-2 gap-4 py-6">
-<div>
-<div class="bg-gray-300 max-w-sm rounded-3xl overflow-hidden p-4">
-
-
-<%= live_component @socket, FridaWeb.FeedbackLive.FormComponent,
-    id: :new,
-    action: :new,
-    title: "Share some feedback",
-    feedback: @feedback,
-    current_user: @current_user
-%>
-
-</div>
-</div>
-
-
-<div>
-<div class="grid grid-cols-1 gap-4">
-<%= for feedback <- @feedbacks do %>
-
-
-  <div class="bg-white rounded-3xl overflow-hidden">
-    <div class="px-6 py-4">
-      <div class="font-bold text-md mb-2"><%= feedback.title %></div>
-      <p class="text-gray-600 text-base truncate">
-        <%= feedback.details %>
-      </p>
-    </div>
-    <div class="px-6 pt-4 pb-2">
-      <button class="inline-block bg-blue-400 rounded-full px-3 py-1 text-sm font-semibold text-white mr-2 mb-2"><%= live_redirect "Show", to: Routes.feedback_show_path(@socket, :show, feedback) %></button>
-      <button class="inline-block bg-red-500 rounded-full px-3 py-1 text-sm font-semibold text-white mr-2 mb-2"><%= link "Delete", to: "#", phx_click: "delete", phx_value_id: feedback.id, data: [confirm: "Are you sure?"] %></button>
+  <div>
+    <div class="bg-gray-300 max-w-sm rounded-3xl overflow-hidden p-4">
+      <%= live_component @socket,
+          FridaWeb.FeedbackLive.FormComponent,
+          id: :new,
+          action: :new,
+          title: "Share some feedback",
+          feedback: @feedback,
+          current_user: @current_user
+      %>
     </div>
   </div>
+  <div>
+    <div class="grid grid-cols-1 gap-4">
+      <%= for feedback <- @feedbacks do %>
+        <div class="bg-white rounded-3xl overflow-hidden flex flex-row">
+          <div class="px-6 py-4 w-16  bg-orange-400 text-white">
+          <div class="font-bold">▲ 12</div>
 
-<% end %>
-
-</div>
-</div>
+          </div>
+          <div class="">
+            <div class="px-6 py-4">
+              <div class="font-bold text-md mb-2"><%= feedback.title %></div>
+              <p class="text-gray-600 text-base truncate">
+                <%= feedback.details %>
+              </p>
+            </div>
+            <div class="px-6 pt-4 pb-2">
+              <button class="inline-block bg-orange-300 rounded-full px-3 py-1 text-sm font-semibold text-white mr-2 mb-2"><%= live_redirect "Show", to: Routes.feedback_show_path(@socket, :show, feedback) %></button>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>

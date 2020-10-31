@@ -3,11 +3,9 @@
     phx-click="lv:clear-flash"
     phx-hook="InitToast"
     phx-value-key="info"><%= live_flash(@flash, :info) %></p>
-
   <p class="alert alert-danger alert-left toast" role="alert"
     phx-click="lv:clear-flash"
     phx-hook="InitToast"
     phx-value-key="error"><%= live_flash(@flash, :error) %></p>
-
   <%= @inner_content %>
 </main>
