@@ -1,0 +1,18 @@
+<h1>Show Feedback</h1>
+
+<ul>
+
+  <li>
+    <strong>Title:</strong>
+    <%= @feedback.title %>
+  </li>
+
+  <li>
+    <strong>Details:</strong>
+    <%= @feedback.details %>
+  </li>
+
+
+</ul>
+
+<span><%= live_redirect "Back", to: Routes.feedback_index_path(@socket, :index) %></span>

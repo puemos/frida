@@ -48,6 +48,7 @@ defmodule FridaWeb do
         layout: {FridaWeb.LayoutView, "live.html"}
 
       unquote(view_helpers())
+      import FridaWeb.LiveHelpers
     end
   end
 
@@ -83,6 +84,7 @@ defmodule FridaWeb do
 
       # Import LiveView helpers (live_render, live_component, live_patch, etc)
       import Phoenix.LiveView.Helpers
+      import FridaWeb.LiveHelpers
 
       # Import basic rendering functionality (render, render_layout, etc)
       import Phoenix.View
