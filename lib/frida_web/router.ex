@@ -68,7 +68,6 @@ defmodule FridaWeb.Router do
     get "/users/settings/confirm_email/:token", UserSettingsController, :confirm_email
 
     live "/feedbacks", FeedbackLive.Index, :index
-
     live "/feedbacks/:id", FeedbackLive.Show, :show
   end
 

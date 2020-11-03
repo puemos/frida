@@ -5,31 +5,68 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <%= csrf_meta_tag() %>
-    <%= live_title_tag assigns[:page_title] || "Frida", suffix: " · Phoenix Framework" %>
+    <%= live_title_tag assigns[:page_title] || "Frida", suffix: " · Feedback tool" %>
     <link phx-track-static rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
     <script defer phx-track-static type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
   </head>
-  <body class="flex flex-col h-full bg-gray-700">
-    <header>
-      <nav class="flex flex-wrap items-center justify-between py-2 px-4 fixed top-0 right-0 left-0 z-30 bg-gray-700">
-        <a class="inline-block mr-4 py-1 text-xl text-gray-300" href="#"><i class="fas fa-bolt"></i> Frida</a>
-      </nav>
-    </header>
-    <main role="main" class="container mx-auto mb-8 px-4 max-w-6xl">
-      <p class="alert alert-info alert-left toast" role="alert"><%= get_flash(@conn, :info) %></p>
-      <p class="alert alert-danger alert-left toast" role="alert"><%= get_flash(@conn, :error) %></p>
-      <div class="flex justify-center p-2">
-        <div class="card w-full max-w-xs">
-          <div class="card-body">
-            <%= @inner_content %>
+  <body class="flex flex-col h-full bg-white">
+    <header class="z-30 fixed top-0 right-0 left-0 px-2 sm:px-6 lg:px-8 py-4">
+      <div class="container mx-auto flex justify-between items-center">
+        <a href="/" title="Frida Home Page" class="flex items-center text-xl text-gray-900">
+          Frida
+        </a>
+        <div class="flex items-center space-x-1">
+          <div class="hidden md:inline-flex space-x-1">
+            <%= link "Home", to: Routes.page_path(@conn, :index), class: "btn btn-sm btn-link" %>
+          </div>
+          <%= render "_user_menu.html", assigns %>
+          <div class="inline-flex md:hidden" x-data="{ open: false }">
+            <button class="btn btn-link btn-sm px-2 flex-none" @click="open = true">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                >
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+              </svg>
+              <span class="sr-only">Open Menu</span>
+            </button>
+            <div class="flex flex-col space-y-3 absolute m-2 top-0 left-0 right-0 rounded bg-white z-50 p-2 pb-4 shadow" x-show.transition="open" @click.away="open = false" x-cloak>
+              <button class="btn btn-link btn-icon px-2 ml-2 flex-none self-end" @click="open = false">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  >
+                  <line x1="18" y1="6" x2="6" y2="18"></line>
+                  <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+                <span class="sr-only">Close Menu</span>
+              </button>
+              <%= link "Home", to: Routes.page_path(@conn, :index), class: "btn btn-link w-full" %>
+            </div>
           </div>
         </div>
       </div>
+    </header>
+    <main role="main" class="container mx-auto mb-8 max-w-6xl px-2 sm:px-6 lg:px-8">
+      <%= @inner_content %>
     </main>
-    <footer class="footer bg-gray-800 text-gray-600 mt-auto py-6">
-      <div class="container mx-auto px-4 max-w-6xl">
-        <span class="text-muted">Frida</span>
-      </div>
-    </footer>
   </body>
 </html>
