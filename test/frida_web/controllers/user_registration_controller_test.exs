@@ -3,7 +3,7 @@ defmodule FridaWeb.UserRegistrationControllerTest do
 
   import Frida.AccountsFixtures
 
-  describe "GET /users/register" do
+  describe "GET /register" do
     test "renders registration page", %{conn: conn} do
       conn = get(conn, Routes.user_registration_path(conn, :new))
       response = html_response(conn, 200)
@@ -13,12 +13,12 @@ defmodule FridaWeb.UserRegistrationControllerTest do
     end
 
     test "redirects if already logged in", %{conn: conn} do
-      conn = conn |> log_in_user(user_fixture()) |> get(Routes.user_registration_path(conn, :new))
+      conn = conn |> login_user(user_fixture()) |> get(Routes.user_registration_path(conn, :new))
       assert redirected_to(conn) == "/"
     end
   end
 
-  describe "POST /users/register" do
+  describe "POST /register" do
     @tag :capture_log
     test "creates account and logs the user in", %{conn: conn} do
       email = unique_user_email()

@@ -4,7 +4,7 @@ defmodule FridaWeb.UserSettingsControllerTest do
   alias Frida.Accounts
   import Frida.AccountsFixtures
 
-  setup :register_and_log_in_user
+  setup :register_and_login_user
 
   describe "GET /users/settings" do
     test "renders settings page", %{conn: conn} do

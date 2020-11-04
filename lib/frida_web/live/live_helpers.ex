@@ -27,8 +27,7 @@ defmodule FridaWeb.LiveHelpers do
       assign_new(socket, :current_user, fn ->
         Frida.Accounts.get_user_by_session_token(user_token)
       end)
-
-    if socket.assigns.current_user.confirmed_at do
+    if socket.assigns.current_user do
       socket
     else
       redirect(socket, to: "/login")
