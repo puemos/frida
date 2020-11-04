@@ -1,9 +1,9 @@
 <div class="bg-white w-full sm:w-10/12 md:w-8/12 lg:w-6/12 xl:w-4/12 mx-auto px-4 sm:px-6 pt-5 pb-6 mt-8 mb-6">
-  <h5 class="py-5 px-5 text-3xl leading-normal text-center text-gray-700 font-bold">Login</h5>
+  <h5 class="px-5 text-3xl leading-normal text-center text-gray-700 font-bold">Login</h5>
   <%= form_for @conn, Routes.user_session_path(@conn, :create), [as: :user], fn f -> %>
   <%= if @error_message do %>
-    <div class="alert alert-danger">
-      <small><%= @error_message %></small>
+    <div class="alert bg-primary-light text-primary" role="alert">
+      <%= @error_message %>
     </div>
   <% end %>
   <div class="mt-4 mb-4">
