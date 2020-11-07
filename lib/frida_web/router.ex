@@ -47,7 +47,7 @@ defmodule FridaWeb.Router do
   ## Authentication routes
 
   scope "/", FridaWeb do
-    pipe_through [:browser, :redirect_if_user_is_authenticated, :put_session_layout]
+    pipe_through [:browser, :redirect_if_user_is_authenticated]
 
     get "/register", UserRegistrationController, :new
     post "/register", UserRegistrationController, :create

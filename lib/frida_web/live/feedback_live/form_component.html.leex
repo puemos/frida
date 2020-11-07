@@ -8,13 +8,13 @@
   phx_change: "validate",
   phx_submit: "save" %>
 <div class="mt-4 mb-4">
-  <%= label f, :title, class: "block pl-1 text-gray-700 uppercase text-xs font-bold mb-2" %>
-  <%= text_input f, :title, class: "tag-input" %>
+  <%= label f, :title, class: "block text-sm mb-1 text-gray-700" %>
+  <%= text_input f, :title, class: "form-input" %>
   <%= error_tag f, :title %>
 </div>
 <div class="mt-4 mb-4">
-  <%= label f, :details, class: "block pl-1 text-gray-700 uppercase text-xs font-bold mb-2" %>
-  <%= textarea f, :details, class: "tag-input", rows: "10" %>
+  <%= label f, :details, class: "block text-sm mb-1 text-gray-700" %>
+  <%= textarea f, :details, class: "form-input", rows: "10" %>
   <%= error_tag f, :details %>
 </div>
 <%= submit "Save", phx_disable_with: "Saving...", class: "btn text-white px-8 bg-blue-400" %>

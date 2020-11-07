@@ -148,10 +148,4 @@ defmodule FridaWeb.UserAuth do
   defp maybe_store_return_to(conn), do: conn
 
   defp signed_in_path(_conn), do: "/"
-
-  def put_session_layout(conn, _opts) do
-    conn
-    |> put_layout(false)
-    |> put_root_layout({FridaWeb.LayoutView, :session})
-  end
 end

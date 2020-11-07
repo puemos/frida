@@ -1,5 +1,4 @@
-<div class="bg-white w-full sm:w-10/12 md:w-8/12 lg:w-6/12 xl:w-4/12 mx-auto px-4 sm:px-6 pt-5 pb-6 mt-8 mb-6">
-  <h5 class="px-5 text-3xl leading-normal text-center text-gray-700 font-bold">Login</h5>
+<%= FridaWeb.SharedComponents.card(title: "Login") do %>
   <%= form_for @conn, Routes.user_session_path(@conn, :create), [as: :user], fn f -> %>
   <%= if @error_message do %>
     <div class="alert bg-primary-light text-primary" role="alert">
@@ -29,4 +28,4 @@
   <%= link "Register", to: Routes.user_registration_path(@conn, :new), class: "btn btn-link btn-sm" %>
   <%= link "Forgot your password?", to: Routes.user_reset_password_path(@conn, :new), class: "btn btn-link btn-sm" %>
 </div>
-</div>
+<% end %>
