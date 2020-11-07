@@ -1,4 +1,4 @@
-defmodule FridaWeb.PageLiveTest do
+defmodule FridaWeb.HomeLiveTest do
   use FridaWeb.ConnCase
 
   import Phoenix.LiveViewTest

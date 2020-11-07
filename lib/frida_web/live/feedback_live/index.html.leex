@@ -1,37 +1,26 @@
-<div class="sticky grid grid-cols-2 gap-4 py-6">
-  <div>
-    <div class="bg-white max-w-sm rounded-3xl overflow-hidden p-4 shadow-2xl">
+<div>
+  <div class="px-4 pb-4">
+    <h1 class="text-4xl">Feedbacks</h1>
+  </div>
+  <div class="grid grid-cols-2 gap-4 py-6">
+    <div class="container">
       <%= live_component @socket,
           FridaWeb.FeedbackLive.FormComponent,
           id: :new,
           action: :new,
-          title: "Share some feedback",
           feedback: @feedback,
           current_user: @current_user
       %>
     </div>
-  </div>
-  <div>
-    <div class="grid grid-cols-1 gap-4">
-      <%= for feedback <- @feedbacks do %>
-        <div class="bg-white rounded-3xl overflow-hidden flex flex-row">
-          <div class="px-6 py-4 w-16  bg-orange-400 text-white">
-          <div class="font-bold">▲ 12</div>
-
-          </div>
-          <div class="">
-            <div class="px-6 py-4">
-              <div class="font-bold text-md mb-2"><%= feedback.title %></div>
-              <p class="text-gray-600 text-base truncate">
-                <%= feedback.details %>
-              </p>
-            </div>
-            <div class="px-6 pt-4 pb-2">
-              <button class="inline-block bg-orange-300 rounded-full px-3 py-1 text-sm font-semibold text-white mr-2 mb-2"><%= live_redirect "Show", to: Routes.feedback_show_path(@socket, :show, feedback) %></button>
-            </div>
-          </div>
-        </div>
-      <% end %>
+    <div>
+      <div class="grid grid-cols-1 gap-6">
+        <%= for feedback <- @feedbacks do %>
+          <%= live_component @socket,
+          FridaWeb.FeedbackLive.FeedbackCardComponent,
+          title: feedback.title,
+          details: feedback.details %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

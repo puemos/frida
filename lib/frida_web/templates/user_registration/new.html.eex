@@ -6,12 +6,12 @@
     </div>
   <% end %>
   <div class="mt-4 mb-4">
-    <%= label f, :email, class: "block text-xs text-gray-700 font-medium block mb-1" %>
+    <%= label f, :email, class: "block text-xs text-white font-medium block mb-1" %>
     <%= text_input f, :email, required: true, class: "form-input" %>
     <%= error_tag f, :email %>
   </div>
   <div class="mb-4">
-    <%= label f, :password, class: "block text-xs text-gray-700 font-medium block mb-1" %>
+    <%= label f, :password, class: "block text-xs text-white font-medium block mb-1" %>
     <%= password_input f, :password, required: true, class: "form-input" %>
     <%= error_tag f, :password %>
   </div>
@@ -19,11 +19,11 @@
     <%= submit "Register with email", class: "btn btn-primary w-full py-3 mt-1" %>
   </div>
 <% end %>
-<div class="mt-3 text-center text-gray-600">
+<div class="mt-6 text-center text-white">
   <small>Already have an account?</small>
 </div>
 <div class="mt-3 flex justify-center">
-  <%= link "Login", to: Routes.user_session_path(@conn, :new), class: "btn btn-link btn-sm" %>
-  <%= link "Forgot your password?", to: Routes.user_reset_password_path(@conn, :new), class: "btn btn-link btn-sm" %>
+  <%= link "Login", to: Routes.user_session_path(@conn, :new), class: "btn btn-link btn-sm text-white" %>
+  <%= link "Forgot your password?", to: Routes.user_reset_password_path(@conn, :new), class: "btn btn-link btn-sm text-white" %>
 </div>
 <% end %>

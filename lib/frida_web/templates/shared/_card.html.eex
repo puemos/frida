@@ -1,4 +1,4 @@
-<div class="sm:bg-white sm:shadow-2xl sm:rounded-3xl w-full xs:w-10/12 sm:w-8/12 md:w-6/12 lg:w-6/12 xl:w-5/12 mx-auto px-4 sm:px-6 pt-5 pb-6 mt-8 mb-6">
-  <h5 class="px-5 text-3xl leading-normal text-center text-gray-700 font-bold"> <%= @title %></h5>
+<div class="bg-gradient-to-r from-red-400 to-pink-500 sm:shadow-2xl sm:rounded-3xl w-full xs:w-10/12 sm:w-8/12 md:w-6/12 lg:w-6/12 xl:w-5/12 mx-auto px-4 sm:px-6 pt-5 pb-6 mt-8 mb-6">
+  <h5 class="px-5 text-3xl leading-normal text-center text-white font-bold"> <%= @title %></h5>
   <%= @inner_content %>
 </div>

@@ -1,21 +1,23 @@
-<div class="font-bold text-lg mb-2"><%= @title %></div>
-<div class="text-gray-800 text-sm mb-2">
-  Let us know what features would help you collect & manage user feedback
-</div>
-<%= f = form_for @changeset, "#",
+<div style="top: 5rem" class="sticky px-6 py-4 bg-gradient-to-r from-red-400 to-pink-500 text-white rounded-3xl">
+  <div class="font-bold text-lg mb-2">Share some feedback</div>
+  <div class="text-white text-sm mb-2">
+    Let us know what features would help you collect & manage user feedback
+  </div>
+  <%= f = form_for @changeset, "#",
   id: "feedback-form",
   phx_target: @myself,
   phx_change: "validate",
   phx_submit: "save" %>
-<div class="mt-4 mb-4">
-  <%= label f, :title, class: "block text-sm mb-1 text-gray-700" %>
-  <%= text_input f, :title, class: "form-input" %>
-  <%= error_tag f, :title %>
-</div>
-<div class="mt-4 mb-4">
-  <%= label f, :details, class: "block text-sm mb-1 text-gray-700" %>
-  <%= textarea f, :details, class: "form-input", rows: "10" %>
-  <%= error_tag f, :details %>
-</div>
-<%= submit "Save", phx_disable_with: "Saving...", class: "btn text-white px-8 bg-blue-400" %>
+  <div class="mt-4 mb-4">
+    <%= label f, :title, class: "block text-sm mb-1" %>
+    <%= text_input f, :title, class: "form-input border-none" %>
+    <%= error_tag f, :title %>
+  </div>
+  <div class="mt-4 mb-4">
+    <%= label f, :details, class: "block text-sm mb-1" %>
+    <%= textarea f, :details, class: "form-input border-none", rows: "10", resize: "none" %>
+    <%= error_tag f, :details %>
+  </div>
+  <%= submit "Save", phx_disable_with: "Saving...", class: "btn text-white px-8 w-full" %>
 </form>
+</div>

@@ -1,7 +1,7 @@
 <%= if @current_user do %>
-  <%= link "Settings", to: Routes.user_settings_path(@conn, :edit), class: "btn btn-sm btn-link" %>
-  <%= link "Logout", to: Routes.user_session_path(@conn, :delete), method: :delete, class: "btn btn-sm btn-link" %>
+  <%= link "Settings", to: Routes.user_settings_path(@conn, :edit), class: "btn btn-sm btn-link text-black" %>
+  <%= link "Logout", to: Routes.user_session_path(@conn, :delete), method: :delete, class: "btn btn-sm btn-link text-black" %>
 <% else %>
-  <%= link "Login", to: Routes.user_session_path(@conn, :new), class: "btn btn-sm btn-link" %>
+  <%= link "Login", to: Routes.user_session_path(@conn, :new), class: "btn btn-sm btn-link text-black" %>
   <%= link "Register", to: Routes.user_registration_path(@conn, :new), class: "btn btn-sm btn-primary" %>
 <% end %>

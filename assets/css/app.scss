@@ -1,7 +1,6 @@
 @tailwind base;
 @tailwind components;
-@import "../node_modules/nprogress/nprogress.css";
-
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap");
 main {
   @apply mt-24;
 }
@@ -15,7 +14,8 @@ main {
 }
 
 /* LiveView specific classes for your customizations */
-.phx-no-feedback.invalid-feedback, .phx-no-feedback .invalid-feedback {
+.phx-no-feedback.invalid-feedback,
+.phx-no-feedback .invalid-feedback {
   display: none;
 }
 
@@ -24,10 +24,10 @@ main {
   transition: opacity 1s ease-out;
 }
 
-.phx-disconnected{
+.phx-disconnected {
   cursor: wait;
 }
-.phx-disconnected *{
+.phx-disconnected * {
   pointer-events: none;
 }
 
