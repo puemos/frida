@@ -17,13 +17,13 @@ module.exports = {
       colors: {
         primary: {
           light: colors.white, // For lighter primary color
-          default: colors.red[500], // Normal primary color
-          dark: colors.red[700], // Used for hover, active, etc.
+          default: colors.teal[400], // Normal primary color
+          dark: colors.blue[700], // Used for hover, active, etc.
         },
         secondary: {
-          light: colors.blue[200], // For lighter primary color
-          default: colors.blue[500], // Normal primary color
-          dark: colors.blue[700], // Used for hover, active, etc.
+          light: colors.red[200], // For lighter primary color
+          default: colors.red[500], // Normal primary color
+          dark: colors.red[700], // Used for hover, active, etc.
         },
       },
     },

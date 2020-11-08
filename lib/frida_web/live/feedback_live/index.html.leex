@@ -2,8 +2,8 @@
   <div class="px-4 pb-4">
     <h1 class="text-4xl">Feedbacks</h1>
   </div>
-  <div class="grid grid-cols-2 gap-4 py-6">
-    <div class="container">
+  <div class="grid grid-cols-3 gap-4 py-6">
+    <div class="col-span-1">
       <%= live_component @socket,
           FridaWeb.FeedbackLive.FormComponent,
           id: :new,
@@ -12,7 +12,7 @@
           current_user: @current_user
       %>
     </div>
-    <div>
+    <div class="col-span-2">
       <div class="grid grid-cols-1 gap-6">
         <%= for feedback <- @feedbacks do %>
           <%= live_component @socket,
