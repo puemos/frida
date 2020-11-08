@@ -10,7 +10,21 @@ defmodule FridaWeb.FeedbackLive.Index do
       assign_defaults(session, socket)
       |> assign(:feedback, %Feedback{})
       |> assign(:feedbacks, list_feedbacks())
+
     {:ok, socket}
+  end
+
+  @impl true
+  # def handle_event("like", %{"id" => id}, socket) do
+  #   # Frida.Feedbacks.like_feedback(feedback, socket.assigns.current_user)
+  #   IO.inspect(id)
+  #   {:noreply, socket}
+  # end
+
+  def handle_info({:like, feedback}, socket) do
+    Frida.Feedbacks.like_feedback(feedback, socket.assigns.current_user)
+    socket = assign(socket, :feedbacks, list_feedbacks())
+    {:noreply, socket}
   end
 
   @impl true
@@ -18,25 +32,12 @@ defmodule FridaWeb.FeedbackLive.Index do
     {:noreply, apply_action(socket, socket.assigns.live_action, params)}
   end
 
-  defp apply_action(socket, :edit, %{"id" => id}) do
-    socket
-    |> assign(:page_title, "Edit Feedback")
-    |> assign(:feedback, Feedbacks.get_feedback!(id))
-  end
-
   defp apply_action(socket, :index, _params) do
     socket
   end
 
-  @impl true
-  def handle_event("delete", %{"id" => id}, socket) do
-    feedback = Feedbacks.get_feedback!(id)
-    {:ok, _} = Feedbacks.delete_feedback(feedback)
-
-    {:noreply, assign(socket, :feedbacks, list_feedbacks())}
-  end
-
   defp list_feedbacks do
-    Feedbacks.list_feedbacks()
+    feedbacks = Feedbacks.list_feedbacks()
+    feedbacks
   end
 end

@@ -7,9 +7,13 @@ defmodule Frida.Feedbacks do
   alias Frida.Repo
 
   alias Frida.Feedbacks.Feedback
+  alias Frida.Feedbacks.Like
 
   def list_feedbacks do
-    Repo.all(Feedback)
+    Repo.all(
+      from f in Feedback,
+        preload: [:likes]
+    )
   end
 
   def get_feedback!(id), do: Repo.get!(Feedback, id)
@@ -18,6 +22,12 @@ defmodule Frida.Feedbacks do
     %Feedback{}
     |> Feedback.changeset(attrs)
     |> Ecto.Changeset.put_assoc(:user, user)
+    |> Repo.insert()
+  end
+
+  def like_feedback(feedback, user) do
+    %Like{}
+    |> Like.changeset(%{feedback_id: feedback.id, user_id: user.id})
     |> Repo.insert()
   end
 

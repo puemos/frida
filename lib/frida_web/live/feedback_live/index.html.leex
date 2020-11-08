@@ -17,8 +17,8 @@
         <%= for feedback <- @feedbacks do %>
           <%= live_component @socket,
           FridaWeb.FeedbackLive.FeedbackCardComponent,
-          title: feedback.title,
-          details: feedback.details %>
+          id: feedback.id,
+          feedback: feedback %>
         <% end %>
       </div>
     </div>

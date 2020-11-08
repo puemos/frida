@@ -6,6 +6,7 @@ defmodule Frida.Feedbacks.Feedback do
     field :details, :string
     field :title, :string
     belongs_to :user, Frida.Accounts.User
+    has_many :likes, Frida.Feedbacks.Like
 
     timestamps()
   end

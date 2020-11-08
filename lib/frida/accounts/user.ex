@@ -8,6 +8,8 @@ defmodule Frida.Accounts.User do
     field :password, :string, virtual: true
     field :hashed_password, :string
     field :confirmed_at, :naive_datetime
+    has_many :likes, Frida.Feedbacks.Like
+    has_many :feedbacks, Frida.Feedbacks.Feedback
 
     timestamps()
   end
