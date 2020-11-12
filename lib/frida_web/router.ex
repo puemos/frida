@@ -1,7 +1,9 @@
 defmodule FridaWeb.Router do
   use FridaWeb, :router
+  use Pow.Phoenix.Router
 
-  import FridaWeb.UserAuth
+  use Pow.Extension.Phoenix.Router,
+    extensions: [PowResetPassword, PowEmailConfirmation]
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -10,31 +12,17 @@ defmodule FridaWeb.Router do
     plug :put_root_layout, {FridaWeb.LayoutView, :root}
     plug :protect_from_forgery
     plug :put_secure_browser_headers
-    plug :fetch_current_user
+  end
+
+  pipeline :protected do
+    plug Pow.Plug.RequireAuthenticated,
+      error_handler: Pow.Phoenix.PlugErrorHandler
   end
 
   pipeline :api do
     plug :accepts, ["json"]
   end
 
-  scope "/", FridaWeb do
-    pipe_through :browser
-
-    live "/", HomeLive, :index
-  end
-
-  # Other scopes may use custom stacks.
-  # scope "/api", FridaWeb do
-  #   pipe_through :api
-  # end
-
-  # Enables LiveDashboard only for development
-  #
-  # If you want to use the LiveDashboard in production, you should put
-  # it behind authentication and allow only admins to access it.
-  # If your application does not have an admins-only section yet,
-  # you can use Plug.BasicAuth to set up some basic authentication
-  # as long as you are also using SSL (which you should anyway).
   if Mix.env() in [:dev, :test] do
     import Phoenix.LiveDashboard.Router
 
@@ -44,39 +32,22 @@ defmodule FridaWeb.Router do
     end
   end
 
-  ## Authentication routes
-
-  scope "/", FridaWeb do
-    pipe_through [:browser, :redirect_if_user_is_authenticated]
-
-    get "/register", UserRegistrationController, :new
-    post "/register", UserRegistrationController, :create
-    get "/login", UserSessionController, :new
-    post "/login", UserSessionController, :create
-    get "/users/reset_password", UserResetPasswordController, :new
-    post "/users/reset_password", UserResetPasswordController, :create
-    get "/users/reset_password/:token", UserResetPasswordController, :edit
-    put "/users/reset_password/:token", UserResetPasswordController, :update
-  end
-
-  scope "/", FridaWeb do
-    pipe_through [:browser, :require_authenticated_user]
-
-    get "/users/settings", UserSettingsController, :edit
-    put "/users/settings/update_password", UserSettingsController, :update_password
-    put "/users/settings/update_email", UserSettingsController, :update_email
-    get "/users/settings/confirm_email/:token", UserSettingsController, :confirm_email
-
-    live "/feedbacks", FeedbackLive.Index, :index
-    live "/feedbacks/:id", FeedbackLive.Show, :show
+  scope "/" do
+    pipe_through [:browser]
+    pow_routes()
+    pow_extension_routes()
   end
 
   scope "/", FridaWeb do
     pipe_through [:browser]
+    live "/", HomeLive, :index
+  end
 
-    delete "/users/log_out", UserSessionController, :delete
-    get "/users/confirm", UserConfirmationController, :new
-    post "/users/confirm", UserConfirmationController, :create
-    get "/users/confirm/:token", UserConfirmationController, :confirm
+  ## Authentication routes
+  scope "/", FridaWeb do
+    pipe_through [:browser, :protected]
+
+    live "/feedbacks", FeedbackLive.Index, :index
+    live "/feedbacks/:id", FeedbackLive.Show, :show
   end
 end

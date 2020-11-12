@@ -3,7 +3,7 @@ defmodule Frida.Feedbacks.Like do
   import Ecto.Changeset
 
   schema "feedback_likes" do
-    belongs_to :user, Frida.Accounts.User
+    belongs_to :user, Frida.Users.User
     belongs_to :feedback, Frida.Feedbacks.Feedback
 
     timestamps()

@@ -1,7 +1,6 @@
-<%= if @current_user do %>
-  <%= link "Settings", to: Routes.user_settings_path(@conn, :edit), class: "btn btn-sm btn-link text-black" %>
-  <%= link "Logout", to: Routes.user_session_path(@conn, :delete), method: :delete, class: "btn btn-sm btn-link text-black" %>
+<%= if Pow.Plug.current_user(@conn) do %>
+  <span><%= link "Sign out", to: Routes.pow_session_path(@conn, :delete), method: :delete %></span>
 <% else %>
-  <%= link "Login", to: Routes.user_session_path(@conn, :new), class: "btn btn-sm btn-link text-black" %>
-  <%= link "Register", to: Routes.user_registration_path(@conn, :new), class: "btn btn-sm btn-primary" %>
+  <span><%= link "Register", to: Routes.pow_registration_path(@conn, :new) %></span>
+  <span><%= link "Sign in", to: Routes.pow_session_path(@conn, :new) %></span>
 <% end %>

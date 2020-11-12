@@ -5,7 +5,9 @@ defmodule Frida.Feedbacks.Feedback do
   schema "feedbacks" do
     field :details, :string
     field :title, :string
-    belongs_to :user, Frida.Accounts.User
+    field :validated, :boolean, default: false
+
+    belongs_to :user, Frida.Users.User
     has_many :likes, Frida.Feedbacks.Like
 
     timestamps()

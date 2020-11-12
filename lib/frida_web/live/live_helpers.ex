@@ -23,10 +23,10 @@ defmodule FridaWeb.LiveHelpers do
   end
 
   def assign_defaults(%{"user_token" => user_token}, socket) do
-    socket =
-      assign_new(socket, :current_user, fn ->
-        Frida.Accounts.get_user_by_session_token(user_token)
-      end)
+    # socket =
+    #   assign_new(socket, :current_user, fn ->
+    #     Frida.Accounts.get_user_by_session_token(user_token)
+    #   end)
 
     if socket.assigns.current_user do
       socket
