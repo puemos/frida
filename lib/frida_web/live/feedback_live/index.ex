@@ -17,7 +17,12 @@ defmodule FridaWeb.FeedbackLive.Index do
   @impl true
   def handle_info({:like, feedback}, socket) do
     Frida.Feedbacks.like_feedback(feedback, socket.assigns.current_user)
-    assign_feedbacks(socket)
+    socket = assign_feedbacks(socket)
+    {:noreply, socket}
+  end
+
+  @impl true
+  def handle_info({:show, feedback}, socket) do
     {:noreply, socket}
   end
 

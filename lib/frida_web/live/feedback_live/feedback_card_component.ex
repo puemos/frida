@@ -7,6 +7,13 @@ defmodule FridaWeb.FeedbackLive.FeedbackCardComponent do
     {:noreply, socket}
   end
 
+  @impl true
+  def handle_event("show", _params, socket) do
+    send(self(), {:show, socket.assigns.feedback})
+    {:noreply, socket}
+  end
+
+
   def count_likes(likes) do
     Enum.count(likes) |> Integer.to_string()
   end

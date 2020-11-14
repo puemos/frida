@@ -1,26 +1,29 @@
-<div class="pl-6 pt-4 border-gray-200 hover:shadow-lg transition-shadow duration-500 ease-in-out border-2 rounded-3xl overflow-hidden flex flex-row justify-between">
-  <div class="">
+<div class="pl-2 px-6 pt-6 overflow-hidden flex flex-row justify-between text-gray-800">
+  <div class="px-4">
+    <button
+    phx-click="like"
+              phx-target="<%= @myself %>"
+    class="px-4 rounded-xl text-gray-500 text-center border-gray-300 hover:border-gray-500 border">
+      <div class="text-blue-300">
+        ▲
+      </div>
+      <div class="font-bold">
+        <%= count_likes(assigns.feedback.likes) %>
+      </div>
+    </button>
+  </div>
+  <div phx-click="show"
+        phx-target="<%= @myself %>"
+        class="cursor-pointer">
     <div class="">
-      <div class="font-bold text-md mb-2"><%= assigns.feedback.title %></div>
-      <p class="text-sm">
+      <div class="font-bold text-sm mb-2 text-black">
+        <%= assigns.feedback.title %>
+      </div>
+      <p class="text-sm line-clamp">
         <%= assigns.feedback.details %>
       </p>
     </div>
     <div class="pt-4 pb-2">
-      <button class="inline-block text-primary rounded-full py-1 text-sm font-semibold mr-2 mb-2">
-        Show
-      </button>
-      <button phx-click="like"
-              phx-target="<%= @myself %>"
-              class="inline-block text-primary rounded-full py-1 text-sm font-semibold mr-2 mb-2">
-        Like
-      </button>
-    </div>
-  </div>
-  <div class="px-4 text-gray-500 text-center">
-    <div class="font-bold">▲</div>
-    <div class="font-bold">
-      <%= count_likes(assigns.feedback.likes) %>
     </div>
   </div>
 </div>

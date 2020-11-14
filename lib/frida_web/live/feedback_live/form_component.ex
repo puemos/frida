@@ -35,8 +35,7 @@ defmodule FridaWeb.FeedbackLive.FormComponent do
         {:noreply,
          socket
          |> put_flash(:info, "Feedback created successfully")
-         |> assign(:changeset, changeset)
-         |> push_redirect(to: socket.assigns.return_to)}
+         |> assign(:changeset, changeset)}
 
       {:error, %Ecto.Changeset{} = changeset} ->
         {:noreply, assign(socket, changeset: changeset)}

@@ -1,4 +1,4 @@
-<main role="main" class="container mx-auto mb-8 px-2 sm:px-6 lg:px-8 max-w-6xl">
+<main role="main" class="container mx-auto mb-8 px-2 sm:px-6 lg:px-8 max-w-6xl flex justify-center">
   <p class="alert alert-info alert-left toast" role="alert"><%= get_flash(@conn, :info) %></p>
   <p class="alert alert-danger alert-left toast" role="alert"><%= get_flash(@conn, :error) %></p>
   <%= @inner_content %>

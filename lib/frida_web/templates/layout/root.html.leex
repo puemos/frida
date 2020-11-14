@@ -9,8 +9,13 @@
     <link phx-track-static rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
     <script defer phx-track-static type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
   </head>
+  <style>
+  body,header {
+    background: #f9f9f9
+  }
+  </style>
   <body class="font-body flex flex-col h-full">
-    <header class="bg-white z-30 fixed top-0 right-0 left-0 py-4 mx-auto mb-8 max-w-6xl px-2 sm:px-6 lg:px-8">
+    <header class="z-30 fixed top-0 right-0 left-0 py-4 mx-auto mb-8 max-w-6xl px-2 sm:px-6 lg:px-8">
       <div class="container mx-auto flex justify-between items-center">
         <div class="w-1/3 flex flex-row items-center justify-start">
           <a href="/" title="Frida Home Page" class="px-4 py-1 text-gray-800 tracking-widest flex items-center text-xl">
@@ -18,55 +23,10 @@
           </a>
         </div>
         <div class="w-1/3 hidden md:inline-flex space-x-1 justify-center">
-          <%= if @current_user != nil and @conn.request_path != "/" do %>
-            <%= active_link(@conn, "Feedbacks", to: "/feedbacks", class_active: "btn btn-sm bg-red-500 text-white", class_inactive: "btn btn-sm text-gray-500") %>
-            <%= active_link(@conn, "Roadmap", to: "/roadmap", class_active: "btn btn-sm bg-red-500 text-white", class_inactive: "btn btn-sm text-gray-500") %>
-          <% end %>
+          <%= render "_menu.html", assigns %>
         </div>
         <div class="w-1/3 flex items-center space-x-1 text-black justify-end">
           <%= render "_user_menu.html", assigns %>
-          <div class="inline-flex md:hidden" x-data="{ open: false }">
-            <button class="btn btn-link text-black btn-sm px-2 flex-none" @click="open = true">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                aria-hidden="true"
-                >
-                <line x1="3" y1="12" x2="21" y2="12"></line>
-                <line x1="3" y1="6" x2="21" y2="6"></line>
-                <line x1="3" y1="18" x2="21" y2="18"></line>
-              </svg>
-              <span class="sr-only">Open Menu</span>
-            </button>
-            <div class="flex flex-col space-y-3 absolute m-2 top-0 left-0 right-0 rounded bg-white z-50 p-2 pb-4 shadow" x-show.transition="open" @click.away="open = false" x-cloak>
-              <button class="btn btn-link text-black btn-icon px-2 ml-2 flex-none self-end" @click="open = false">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  aria-hidden="true"
-                  >
-                  <line x1="18" y1="6" x2="6" y2="18"></line>
-                  <line x1="6" y1="6" x2="18" y2="18"></line>
-                </svg>
-                <span class="sr-only">Close Menu</span>
-              </button>
-              <%= link "Home", to: Routes.home_path(@conn, :index), class: "btn btn-link text-black w-full" %>
-            </div>
-          </div>
         </div>
       </div>
     </header>

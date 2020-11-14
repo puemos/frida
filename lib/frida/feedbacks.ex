@@ -11,8 +11,8 @@ defmodule Frida.Feedbacks do
 
   def list_feedbacks do
     Repo.all(
-      from(f in Feedback, where: f.validated == true),
-      preload: [:likes]
+      from f in Feedback,
+        preload: [:likes]
     )
   end
 

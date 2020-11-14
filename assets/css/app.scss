@@ -1,6 +1,8 @@
 @tailwind base;
 @tailwind components;
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap");
+
+
 main {
   @apply mt-24;
 }
@@ -29,6 +31,13 @@ main {
 }
 .phx-disconnected * {
   pointer-events: none;
+}
+
+.line-clamp {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 @tailwind utilities;
