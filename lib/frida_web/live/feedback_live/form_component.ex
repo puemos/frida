@@ -14,6 +14,14 @@ defmodule FridaWeb.FeedbackLive.FormComponent do
   end
 
   @impl true
+  def handle_event("validate", %{"feedback" => feedback_params}, socket) do
+    changeset =
+      socket.assigns.feedback
+      |> Feedbacks.change_feedback(feedback_params)
+      |> Map.put(:action, :validate)
+
+    {:noreply, assign(socket, :changeset, changeset)}
+  end
 
   def handle_event("save", %{"feedback" => feedback_params}, socket) do
     save_feedback(socket, socket.assigns.action, feedback_params)

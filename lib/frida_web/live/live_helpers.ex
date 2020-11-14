@@ -1,6 +1,7 @@
 defmodule FridaWeb.LiveHelpers do
   import Phoenix.LiveView.Helpers
   use Phoenix.LiveView
+  alias FridaWeb.Credentials
 
   @doc """
   Renders a component inside the `FridaWeb.ModalComponent` component.
@@ -22,16 +23,16 @@ defmodule FridaWeb.LiveHelpers do
     live_component(socket, FridaWeb.ModalComponent, modal_opts)
   end
 
-  def assign_defaults(%{"user_token" => user_token}, socket) do
-    # socket =
-    #   assign_new(socket, :current_user, fn ->
-    #     Frida.Accounts.get_user_by_session_token(user_token)
-    #   end)
+  def assign_defaults(session, socket) do
+    socket =
+      assign_new(socket, :current_user, fn ->
+        Credentials.get_user(socket, session)
+      end)
 
     if socket.assigns.current_user do
       socket
     else
-      redirect(socket, to: "/login")
+      redirect(socket, to: "/session/new")
     end
   end
 

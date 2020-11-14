@@ -29,6 +29,7 @@ config :phoenix, :json_library, Jason
 config :frida, :pow,
   user: Frida.Users.User,
   repo: Frida.Repo,
+  web_module: FridaWeb,
   extensions: [PowResetPassword, PowEmailConfirmation],
   controller_callbacks: Pow.Extension.Phoenix.ControllerCallbacks,
   mailer_backend: FridaWeb.Pow.Mailer
