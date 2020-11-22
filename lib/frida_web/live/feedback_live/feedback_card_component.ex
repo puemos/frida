@@ -12,9 +12,4 @@ defmodule FridaWeb.FeedbackLive.FeedbackCardComponent do
     send(self(), {:show, socket.assigns.feedback})
     {:noreply, socket}
   end
-
-
-  def count_likes(likes) do
-    Enum.count(likes) |> Integer.to_string()
-  end
 end

@@ -36,6 +36,11 @@ defmodule FridaWeb.LiveHelpers do
     end
   end
 
+  @spec count(list()) :: binary
+  def count(enumerable) do
+    Enum.count(enumerable) |> Integer.to_string()
+  end
+
   def render(assigns) do
     ~L'''
     '''
