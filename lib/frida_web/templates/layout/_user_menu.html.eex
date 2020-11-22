@@ -1,6 +1,3 @@
 <%= if Pow.Plug.current_user(@conn) do %>
   <span><%= link "Sign out", to: Routes.pow_session_path(@conn, :delete), method: :delete, class: "btn btn-sm" %></span>
-<% else %>
-  <span><%= link "Register", to: Routes.pow_registration_path(@conn, :new), class: "btn btn-sm" %></span>
-  <span><%= link "Sign in", to: Routes.pow_session_path(@conn, :new), class: "btn btn-sm" %></span>
 <% end %>
