@@ -9,6 +9,7 @@ defmodule Frida.Feedbacks.Feedback do
 
     belongs_to :user, Frida.Users.User
     has_many :likes, Frida.Feedbacks.Like
+    has_many :comments, Frida.Feedbacks.Comment
 
     timestamps()
   end

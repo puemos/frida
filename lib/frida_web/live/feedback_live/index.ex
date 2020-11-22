@@ -23,7 +23,8 @@ defmodule FridaWeb.FeedbackLive.Index do
 
   @impl true
   def handle_info({:show, feedback}, socket) do
-    {:noreply, socket}
+    {:noreply,
+     live_redirect(socket, to: Routes.live_path(socket, FridaWeb.FeedbackLive.Show, feedback.id))}
   end
 
   @impl true

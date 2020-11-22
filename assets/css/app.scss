@@ -1,7 +1,8 @@
 @tailwind base;
 @tailwind components;
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap");
+@tailwind utilities;
 
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap");
 
 main {
   @apply mt-24;
@@ -12,7 +13,7 @@ main {
 }
 
 .alert.toast {
-  @apply z-40 fixed top-0 right-0 w-64 mt-20 shadow-xl cursor-pointer text-sm ease-out duration-300;
+  @apply z-40 fixed top-0 right-0 w-64 mt-20 shadow-xl cursor-pointer text-sm ease-out duration-300 text-gray-700 bg-white;
 }
 
 /* LiveView specific classes for your customizations */
@@ -40,4 +41,43 @@ main {
   overflow: hidden;
 }
 
-@tailwind utilities;
+body {
+  background: #e2e7f2;
+  @apply subpixel-antialiased;
+}
+header {
+  background: #e2e7f2;
+}
+
+.input {
+  background: #f9f9f9;
+  @apply rounded-md py-4 px-3 placeholder-gray-500 text-sm;
+}
+
+.card {
+  @apply shadow-lg bg-white px-5 pb-6 pt-10 rounded-lg;
+}
+
+.card-title {
+  @apply text-xl text-black;
+}
+
+.card-subtitle {
+  @apply text-sm text-gray-400;
+}
+
+.button-base {
+  @apply rounded-xl px-4 py-2 text-sm font-semibold;
+}
+
+.button-primary {
+  @apply button-base bg-purple-700 text-white hover:bg-purple-500;
+}
+
+.button-secondary {
+  @apply button-base bg-purple-50 text-purple-700 hover:bg-purple-200;
+}
+
+.button-flat {
+  @apply button-base bg-white text-purple-700 hover:text-purple-500;
+}

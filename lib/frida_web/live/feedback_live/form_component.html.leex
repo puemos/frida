@@ -1,23 +1,20 @@
-<div style="top: 5rem" class="sticky text-gray-800 px-6 py-6 bg-white shadow-2xl rounded-3xl">
-  <div class="text-lg mb-2 text-black">Share some feedback</div>
-  <div class="text-sm mb-2 ">
-    Let us know what features would help you collect & manage user feedback
-  </div>
+<div class="sticky card">
+  <h1 class="card-title">Share some feedback</h1>
+  <h3 class="card-subtitle">Let us know what features would help you collect & manage user feedback</h1>
+  <div class="h-4"></div>
   <%= f = form_for @changeset, "#",
   id: "feedback-form",
   phx_target: @myself,
   phx_change: "validate",
   phx_submit: "save" %>
   <div class="mt-4 mb-4">
-    <%= label f, :title, class: "block text-sm mb-1" %>
-    <%= text_input f, :title, class: "form-input bg-gray-100" %>
+    <%= text_input f, :title, placeholder: "Title", class: "input w-full" %>
     <%= error_tag f, :title %>
   </div>
   <div class="mt-4 mb-4">
-    <%= label f, :details, class: "block text-sm mb-1" %>
-    <%= textarea f, :details, class: "form-input bg-gray-100", rows: "10", resize: "none" %>
+    <%= textarea f, :details, placeholder: "Write something...", class: "input w-full", rows: "10", resize: "none" %>
     <%= error_tag f, :details %>
   </div>
-  <%= submit "Save", phx_disable_with: "Saving...", class: "btn hover:bg-gray-300 text-gray-700 border border-gray-300 px-8 w-full" %>
+  <%= submit "Save", phx_disable_with: "Saving...", class: "button-primary w-full" %>
 </form>
 </div>

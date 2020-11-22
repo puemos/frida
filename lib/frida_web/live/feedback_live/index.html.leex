@@ -1,9 +1,6 @@
 <div>
-  <div class="px-4 pb-4">
-    <h1 class="text-4xl">Feedbacks</h1>
-  </div>
-  <div class="grid grid-cols-3 gap-4 py-6">
-    <div class="col-span-1">
+  <div class="flex flex-row py-6">
+    <div class="w-96">
       <div class="max-w-md">
         <%= live_component @socket,
           FridaWeb.FeedbackLive.FormComponent,
@@ -14,8 +11,8 @@
       %>
       </div>
     </div>
-    <div class="col-span-2 mx-10 max-w-xl">
-      <div class="grid grid-cols-1 gap-1 divide-y divide-gray-400 bg-white shadow-2xl rounded-3xl">
+    <div class="mx-10 max-w-xl">
+      <div class="grid grid-cols-1 gap-3">
         <%= for feedback <- @feedbacks do %>
           <%= live_component @socket,
           FridaWeb.FeedbackLive.FeedbackCardComponent,

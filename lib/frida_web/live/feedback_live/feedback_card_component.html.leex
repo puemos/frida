@@ -1,29 +1,50 @@
-<div class="pl-2 px-6 pt-6 overflow-hidden flex flex-row justify-between text-gray-800">
-  <div class="px-4">
-    <button
-    phx-click="like"
-              phx-target="<%= @myself %>"
-    class="px-4 rounded-xl text-gray-500 text-center border-gray-300 hover:border-gray-500 border">
-      <div class="text-blue-300">
-        ▲
+<div class="card">
+  <div class="flex flex-row justify-between">
+    <div>
+      <div class="">
+        <div class="flex flex-row items-baseline">
+          <div class="card-title">
+            <%= assigns.feedback.title %>
+          </div>
+          <div class="w-2"></div>
+        </div>
+        <div class="h-4"></div>
+        <p class="card-subtitle line-clamp">
+          <%= assigns.feedback.details %>
+        </p>
+        <div class="h-6"></div>
+        <div class="flex flex-row text-gray-400 text-sm">
+          <div class="flex flex-row items-center">
+            <div class="w-4">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M4.293 15.707a1 1 0 010-1.414l5-5a1 1 0 011.414 0l5 5a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414 0zm0-6a1 1 0 010-1.414l5-5a1 1 0 011.414 0l5 5a1 1 0 01-1.414 1.414L10 5.414 5.707 9.707a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+              </svg>
+            </div>
+          </div>
+          <div class="w-1"></div>
+          <div><%= count_likes(assigns.feedback.likes) %></div>
+          <div class="w-5"></div>
+          <div class="flex flex-row items-center">
+            <div class="w-4">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M2 5a2 2 0 012-2h7a2 2 0 012 2v4a2 2 0 01-2 2H9l-3 3v-3H4a2 2 0 01-2-2V5z" />
+                <path d="M15 7v2a4 4 0 01-4 4H9.828l-1.766 1.767c.28.149.599.233.938.233h2l3 3v-3h2a2 2 0 002-2V9a2 2 0 00-2-2h-1z" />
+              </svg>
+            </div>
+            <div class="w-1"></div>
+            <div><%= count_likes(assigns.feedback.likes) %></div>
+          </div>
+        </div>
       </div>
-      <div class="font-bold">
-        <%= count_likes(assigns.feedback.likes) %>
-      </div>
-    </button>
-  </div>
-  <div phx-click="show"
-        phx-target="<%= @myself %>"
-        class="cursor-pointer">
-    <div class="">
-      <div class="font-bold text-sm mb-2 text-black">
-        <%= assigns.feedback.title %>
-      </div>
-      <p class="text-sm line-clamp">
-        <%= assigns.feedback.details %>
-      </p>
     </div>
-    <div class="pt-4 pb-2">
+    <div class="px-4">
+      <button phx-click="like"
+              phx-target="<%= @myself %>"
+              class="h-10 w-10 rounded-full bg-purple-500 text-white text-center hover:bg-purple-300 focus:outline-none">
+        <div>
+          ▲
+        </div>
+      </button>
     </div>
   </div>
 </div>
