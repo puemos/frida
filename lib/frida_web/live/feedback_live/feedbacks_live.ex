@@ -1,4 +1,4 @@
-defmodule FridaWeb.FeedbackLive.Index do
+defmodule FridaWeb.FeedbacksLive do
   use FridaWeb, :live_view
 
   alias Frida.Feedbacks
@@ -19,21 +19,6 @@ defmodule FridaWeb.FeedbackLive.Index do
     Frida.Feedbacks.like_feedback(feedback, socket.assigns.current_user)
     socket = assign_feedbacks(socket)
     {:noreply, socket}
-  end
-
-  @impl true
-  def handle_info({:show, feedback}, socket) do
-    {:noreply,
-     live_redirect(socket, to: Routes.live_path(socket, FridaWeb.FeedbackLive.Show, feedback.id))}
-  end
-
-  @impl true
-  def handle_params(params, _url, socket) do
-    {:noreply, apply_action(socket, socket.assigns.live_action, params)}
-  end
-
-  defp apply_action(socket, :index, _params) do
-    socket
   end
 
   defp assign_feedbacks(socket) do

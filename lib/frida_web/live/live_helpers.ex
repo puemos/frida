@@ -40,9 +40,4 @@ defmodule FridaWeb.LiveHelpers do
   def count(enumerable) do
     Enum.count(enumerable) |> Integer.to_string()
   end
-
-  def render(assigns) do
-    ~L'''
-    '''
-  end
 end

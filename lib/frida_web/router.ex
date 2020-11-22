@@ -40,14 +40,14 @@ defmodule FridaWeb.Router do
 
   scope "/", FridaWeb do
     pipe_through [:browser]
-    live "/", HomeLive, :index
+    live "/", HomeLive
   end
 
   ## Authentication routes
   scope "/", FridaWeb do
     pipe_through [:browser, :protected]
 
-    live "/feedbacks", FeedbackLive.Index, :index
-    live "/feedbacks/:id", FeedbackLive.Show, :show
+    live "/feedbacks", FeedbacksLive
+    live "/feedbacks/:id", FeedbackDetailsLive
   end
 end

@@ -13,7 +13,8 @@ defmodule Frida.Feedbacks.Comment do
   @doc false
   def changeset(comment, attrs) do
     comment
-    |> cast(attrs, [:body])
+    |> cast(attrs, [:body, :user_id, :feedback_id])
     |> validate_required([:body])
+    |> validate_required([:user_id, :feedback_id])
   end
 end
