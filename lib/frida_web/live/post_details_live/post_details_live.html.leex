@@ -18,7 +18,9 @@
       <div>
         <h3 class="text-md">Status</h3>
         <h4 class="text-sm text-gray-500">
-          Idea
+          <span class="text-xs tracking-wider font-bold uppercase text-<%= assigns.post.status.color %>-500">
+            <%= assigns.post.status.name %>
+          </span>
         </h3>
       </div>
     </div>
