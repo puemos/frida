@@ -1,11 +1,20 @@
-# Script for populating the database. You can run it as:
-#
-#     mix run priv/repo/seeds.exs
-#
-# Inside the script, you can read and write to any of your
-# repositories directly:
-#
-#     Frida.Repo.insert!(%Frida.SomeSchema{})
-#
-# We recommend using the bang functions (`insert!`, `update!`
-# and so on) as they will fail if something goes wrong.
+alias Frida.Repo
+alias Frida.Posts.Status
+
+Repo.insert!(%Status{
+  name: "Idea",
+  color: "gray",
+  order: 0
+})
+
+Repo.insert!(%Status{
+  name: "WIP",
+  color: "blue",
+  order: 1
+})
+
+Repo.insert!(%Status{
+  name: "Done",
+  color: "green",
+  order: 2
+})

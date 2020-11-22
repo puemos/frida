@@ -30,6 +30,8 @@ defmodule FridaWeb.PostLive.FormComponent do
   defp save_post(socket, :new, post_params) do
     case Posts.create_post(post_params, socket.assigns.current_user) do
       {:ok, _post} ->
+        send(self(), {:load})
+
         changeset = Posts.change_post(%Frida.Posts.Post{})
 
         {:noreply,

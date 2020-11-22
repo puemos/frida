@@ -8,6 +8,7 @@ defmodule Frida.Posts.Post do
     field :validated, :boolean, default: false
 
     belongs_to :user, Frida.Users.User
+    belongs_to :status, Frida.Posts.Status
     has_many :likes, Frida.Posts.Like
     has_many :comments, Frida.Posts.Comment
 
@@ -18,6 +19,7 @@ defmodule Frida.Posts.Post do
   def changeset(post, attrs) do
     post
     |> cast(attrs, [:title, :details])
+    |> cast_assoc(:status)
     |> validate_required([:title, :details])
   end
 end

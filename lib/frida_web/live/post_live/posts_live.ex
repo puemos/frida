@@ -16,7 +16,13 @@ defmodule FridaWeb.PostsLive do
 
   @impl true
   def handle_info({:like, post}, socket) do
-    Frida.Posts.like_post(post, socket.assigns.current_user)
+    Frida.Posts.add_like_post(post, socket.assigns.current_user)
+    socket = assign_posts(socket)
+    {:noreply, socket}
+  end
+
+  @impl true
+  def handle_info({:load}, socket) do
     socket = assign_posts(socket)
     {:noreply, socket}
   end

@@ -11,12 +11,14 @@ defmodule Frida.Posts do
   def list_posts do
     Repo.all(
       from f in Post,
-        preload: [:likes, :comments]
+        preload: [:likes, :comments, :status]
     )
   end
 
-  def get_post!(id),
-    do: Repo.get!(Post, id) |> Repo.preload([:likes, [comments: :user], :user])
+  def get_post!(id) do
+    Repo.get!(Post, id)
+    |> Repo.preload([:likes, [comments: :user], :user, :status])
+  end
 
   def create_post(attrs \\ %{}, user) do
     %Post{}
@@ -25,10 +27,16 @@ defmodule Frida.Posts do
     |> Repo.insert()
   end
 
-  def like_post(post, user) do
+  def add_like_post(post, user) do
     %Like{}
     |> Like.changeset(%{post_id: post.id, user_id: user.id})
     |> Repo.insert()
+  end
+
+  def add_status_post(post, status) do
+    post
+    |> Post.changeset(%{status_id: status.id})
+    |> Repo.update()
   end
 
   def create_comment_post(comment) do
