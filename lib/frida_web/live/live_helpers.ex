@@ -32,7 +32,7 @@ defmodule FridaWeb.LiveHelpers do
     if socket.assigns.current_user do
       socket
     else
-      redirect(socket, to: "/session/new")
+      redirect(socket, to: Routes.pow_session_path())
     end
   end
 
@@ -40,4 +40,8 @@ defmodule FridaWeb.LiveHelpers do
   def count(enumerable) do
     Enum.count(enumerable) |> Integer.to_string()
   end
+
+  @spec is_admin?(Frida.Users.User.t()) :: boolean()
+  def is_admin?(%{role: "admin"}), do: true
+  def is_admin?(_any), do: false
 end

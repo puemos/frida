@@ -19,6 +19,10 @@ defmodule FridaWeb.Router do
       error_handler: Pow.Phoenix.PlugErrorHandler
   end
 
+  pipeline :admin do
+    plug FridaWeb.EnsureRolePlug, :admin
+  end
+
   pipeline :api do
     plug :accepts, ["json"]
   end
@@ -43,6 +47,12 @@ defmodule FridaWeb.Router do
     live "/", HomeLive
   end
 
+  scope "/admin", FridaWeb do
+    pipe_through [:browser, :admin]
+
+    live "/", AdminLive
+  end
+
   ## Authentication routes
   scope "/", FridaWeb do
     pipe_through [:browser, :protected]
@@ -56,6 +66,5 @@ defmodule FridaWeb.Router do
 
     live "/status/:id", StatusLive.Show, :show
     live "/status/:id/show/edit", StatusLive.Show, :edit
-
   end
 end
