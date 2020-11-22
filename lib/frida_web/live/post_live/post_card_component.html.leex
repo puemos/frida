@@ -1,0 +1,56 @@
+<div class="card">
+  <div class="flex flex-row justify-between w-full">
+    <div class="w-full">
+      <div class="">
+        <div class="card-title">
+          <%= assigns.post.title %>
+        </div>
+        <div class="h-1"></div>
+        <div class="text-gray-500 text-xs">
+          <%= assigns.post.inserted_at %>
+        </div>
+      </div>
+      <div class="h-4"></div>
+      <p class="card-body line-clamp">
+        <%= assigns.post.details %>
+      </p>
+      <div class="h-6"></div>
+      <div class="flex flex-row justify-between items-center w-full">
+        <div class="flex flex-row text-gray-400 text-sm">
+          <div class="flex flex-row items-center">
+            <div class="w-4">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd" />
+              </svg>
+            </div>
+          </div>
+          <div class="w-1"></div>
+          <div><%= count(assigns.post.likes) %></div>
+          <div class="w-5"></div>
+          <div class="flex flex-row items-center">
+            <div class="w-4">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M2 5a2 2 0 012-2h7a2 2 0 012 2v4a2 2 0 01-2 2H9l-3 3v-3H4a2 2 0 01-2-2V5z" />
+                <path d="M15 7v2a4 4 0 01-4 4H9.828l-1.766 1.767c.28.149.599.233.938.233h2l3 3v-3h2a2 2 0 002-2V9a2 2 0 00-2-2h-1z" />
+              </svg>
+            </div>
+            <div class="w-1"></div>
+            <div><%= count(assigns.post.comments) %></div>
+          </div>
+        </div>
+        <div>
+          <%= live_patch to: Routes.live_path(@socket, FridaWeb.PostDetailsLive, @post.id) do %>
+            <button
+              class="h-12 w-12 flex justify-center items-center rounded-full bg-purple-500 text-white text-center hover:shadow-lg transition duration-200 ease-in-out focus:outline-none">
+              <div class="w-5">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                </svg>
+              </div>
+            </button>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

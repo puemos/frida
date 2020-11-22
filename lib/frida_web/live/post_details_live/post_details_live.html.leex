@@ -4,14 +4,14 @@
       <div>
         <h3 class="text-md">Created by</h3>
         <h4 class="text-sm text-gray-500">
-          <%= assigns.feedback.user.email %>
+          <%= assigns.post.user.email %>
         </h4>
       </div>
       <hr class="my-4">
       <div>
         <h3 class="text-md">Votes</h3>
         <h4 class="text-sm text-gray-500">
-          <%= count(assigns.feedback.likes) %> votes
+          <%= count(assigns.post.likes) %> votes
         </h4>
       </div>
       <hr class="my-4">
@@ -31,13 +31,13 @@
           <div class="">
             <div class="flex flex-row items-baseline">
               <div class="card-title">
-                <%= assigns.feedback.title %>
+                <%= assigns.post.title %>
               </div>
               <div class="w-2"></div>
             </div>
             <div class="h-4"></div>
-            <p class="card-subtitle line-clamp">
-              <%= assigns.feedback.details %>
+            <p class="card-body line-clamp">
+              <%= assigns.post.details %>
             </p>
             <div class="h-6"></div>
           </div>
@@ -45,10 +45,10 @@
       </div>
       <div>
         <%= live_component @socket,
-          FridaWeb.FeedbackDetailsLive.FormComponent,
+          FridaWeb.PostDetailsLive.FormComponent,
           id: :new,
           action: :new,
-          feedback_id: @feedback.id,
+          post_id: @post.id,
           user_id: @current_user.id
       %>
       </div>
@@ -58,10 +58,17 @@
       <div class="card-title">Activity</div>
       <div class="h-6"></div>
       <div class="divide-y-2 divide-gray-100">
-        <%= for comment <- @feedback.comments do %>
+        <%= for comment <- @post.comments do %>
           <div class="py-4">
             <div class="text-sm text-gray-800"><%= comment.body %></div>
-            <div class="text-xs text-gray-500"><%= comment.inserted_at %></div>
+            <div class="h-1"></div>
+            <div class="flex flex-row text-xs text-gray-400">
+              <div class=""><%= comment.user.email %></div>
+              <div class="w-1"></div>
+              <div class="">·</div>
+              <div class="w-1"></div>
+              <div class=""><%= comment.inserted_at %></div>
+            </div>
           </div>
         <% end %>
       </div>

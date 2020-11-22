@@ -1,12 +1,12 @@
-defmodule FridaWeb.FeedbackDetailsLive.FormComponent do
+defmodule FridaWeb.PostDetailsLive.FormComponent do
   use FridaWeb, :live_component
 
-  alias Frida.Feedbacks
-  alias Frida.Feedbacks.{Comment}
+  alias Frida.Posts
+  alias Frida.Posts.{Comment}
 
   @impl true
   def update(assigns, socket) do
-    changeset = Feedbacks.change_comment(%Comment{})
+    changeset = Posts.change_comment(%Comment{})
 
     {:ok,
      socket
@@ -18,7 +18,7 @@ defmodule FridaWeb.FeedbackDetailsLive.FormComponent do
   # def handle_event("validate", %{"comment" => comment_params}, socket) do
   #   changeset =
   #     socket.assigns.comment_params
-  #     |> Feedbacks.comment_feedback()
+  #     |> Posts.comment_post()
   #     |> Map.put(:action, :validate)
 
   #   {:noreply, assign(socket, :changeset, changeset)}
@@ -29,10 +29,10 @@ defmodule FridaWeb.FeedbackDetailsLive.FormComponent do
   end
 
   defp save_comment(socket, comment_params) do
-    case Feedbacks.create_comment_feedback(comment_params) do
+    case Posts.create_comment_post(comment_params) do
       {:ok, _comment} ->
-        changeset = Feedbacks.change_comment(%Comment{})
-        send(self(), {:load, comment_params.feedback_id})
+        changeset = Posts.change_comment(%Comment{})
+        send(self(), {:load, comment_params.post_id})
 
         {:noreply,
          socket

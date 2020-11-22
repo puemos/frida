@@ -1,9 +1,9 @@
 <div class="sticky card">
-  <h1 class="card-title">Share some feedback</h1>
-  <h3 class="card-subtitle">Let us know what features would help you collect & manage user feedback</h1>
+  <h1 class="card-title">Share some post</h1>
+  <h3 class="card-subtitle">Let us know what features would help you collect & manage user post</h1>
   <div class="h-4"></div>
   <%= f = form_for @changeset, "#",
-  id: "feedback-form",
+  id: "post-form",
   phx_target: @myself,
   phx_change: "validate",
   phx_submit: "save" %>

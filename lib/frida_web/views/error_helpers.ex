@@ -12,7 +12,7 @@ defmodule FridaWeb.ErrorHelpers do
     Enum.map(Keyword.get_values(form.errors, field), fn error ->
       content_tag(:span, translate_error(error),
         class: "text-red-700 text-xs mt-1",
-        phx_feedback_for: input_id(form, field)
+        phx_post_for: input_id(form, field)
       )
     end)
   end

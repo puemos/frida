@@ -1,22 +1,22 @@
-defmodule Frida.Feedbacks.Feedback do
+defmodule Frida.Posts.Post do
   use Ecto.Schema
   import Ecto.Changeset
 
-  schema "feedbacks" do
+  schema "posts" do
     field :details, :string
     field :title, :string
     field :validated, :boolean, default: false
 
     belongs_to :user, Frida.Users.User
-    has_many :likes, Frida.Feedbacks.Like
-    has_many :comments, Frida.Feedbacks.Comment
+    has_many :likes, Frida.Posts.Like
+    has_many :comments, Frida.Posts.Comment
 
     timestamps()
   end
 
   @doc false
-  def changeset(feedback, attrs) do
-    feedback
+  def changeset(post, attrs) do
+    post
     |> cast(attrs, [:title, :details])
     |> validate_required([:title, :details])
   end

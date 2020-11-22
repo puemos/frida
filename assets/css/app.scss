@@ -62,6 +62,11 @@ header {
   @apply text-sm text-gray-400;
 }
 
+.card-body {
+  @apply text-sm text-gray-400;
+}
+
+
 .button-base {
   @apply rounded-xl px-4 py-2 text-sm font-semibold;
 }

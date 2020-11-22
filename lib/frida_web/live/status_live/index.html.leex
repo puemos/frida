@@ -1,0 +1,39 @@
+<h1>Listing Status</h1>
+
+<%= if @live_action in [:new, :edit] do %>
+  <%= live_modal @socket, FridaWeb.StatusLive.FormComponent,
+    id: @status.id || :new,
+    title: @page_title,
+    action: @live_action,
+    status: @status,
+    return_to: Routes.status_index_path(@socket, :index) %>
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Color</th>
+      <th>Order</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody id="status">
+    <%= for status <- @status_collection do %>
+      <tr id="status-<%= status.id %>">
+        <td><%= status.name %></td>
+        <td><%= status.color %></td>
+        <td><%= status.order %></td>
+
+        <td>
+          <span><%= live_redirect "Show", to: Routes.status_show_path(@socket, :show, status) %></span>
+          <span><%= live_patch "Edit", to: Routes.status_index_path(@socket, :edit, status) %></span>
+          <span><%= link "Delete", to: "#", phx_click: "delete", phx_value_id: status.id, data: [confirm: "Are you sure?"] %></span>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<span><%= live_patch "New Status", to: Routes.status_index_path(@socket, :new) %></span>

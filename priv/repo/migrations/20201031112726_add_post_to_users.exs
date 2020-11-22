@@ -1,8 +1,8 @@
-defmodule Frida.Repo.Migrations.AddFeedbackToUsers do
+defmodule Frida.Repo.Migrations.AddPostToUsers do
   use Ecto.Migration
 
   def change do
-    alter table("feedbacks") do
+    alter table("posts") do
       add :user_id, references(:users)
     end
   end

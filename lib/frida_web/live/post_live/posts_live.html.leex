@@ -3,21 +3,21 @@
     <div class="">
       <div class="hidden lg:block lg:w-80">
         <%= live_component @socket,
-          FridaWeb.FeedbackLive.FormComponent,
+          FridaWeb.PostLive.FormComponent,
           id: :new,
           action: :new,
-          feedback: @feedback,
+          post: @post,
           current_user: @current_user
       %>
       </div>
     </div>
     <div class="lg:ml-10">
       <div class="grid grid-cols-1 gap-3">
-        <%= for feedback <- @feedbacks do %>
+        <%= for post <- @posts do %>
           <%= live_component @socket,
-          FridaWeb.FeedbackLive.FeedbackCardComponent,
-          id: feedback.id,
-          feedback: feedback %>
+          FridaWeb.PostLive.PostCardComponent,
+          id: post.id,
+          post: post %>
         <% end %>
       </div>
     </div>

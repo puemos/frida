@@ -11,11 +11,11 @@ defmodule FridaWeb.LiveHelpers do
 
   ## Examples
 
-      <%= live_modal @socket, FridaWeb.FeedbackLive.FormComponent,
-        id: @feedback.id || :new,
+      <%= live_modal @socket, FridaWeb.PostLive.FormComponent,
+        id: @post.id || :new,
         action: @live_action,
-        feedback: @feedback,
-        return_to: Routes.feedback_index_path(@socket, :index) %>
+        post: @post,
+        return_to: Routes.post_index_path(@socket, :index) %>
   """
   def live_modal(socket, component, opts) do
     path = Keyword.fetch!(opts, :return_to)

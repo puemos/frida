@@ -5,7 +5,7 @@
   phx_submit: "save" %>
   <div class="mt-4 mb-4">
     <%= hidden_input f, :user_id, value: @user_id %>
-    <%= hidden_input f, :feedback_id, value: @feedback_id %>
+    <%= hidden_input f, :post_id, value: @post_id %>
     <%= text_input f, :body, placeholder: "Leave a comment...", class: "input w-full" %>
     <%= error_tag f, :body %>
   </div>

@@ -1,4 +1,4 @@
 <%= if @current_user != nil and @conn.request_path != "/" do %>
-  <%= active_link(@conn, "Feedbacks", to: "/feedbacks", class_active: "button-flat", class_inactive: "button-flat text-white") %>
+  <%= active_link(@conn, "Posts", to: "/posts", class_active: "button-flat", class_inactive: "button-flat text-white") %>
   <%= active_link(@conn, "Roadmap", to: "/roadmap", class_active: "button-flat", class_inactive: "button-flat text-white") %>
 <% end %>
