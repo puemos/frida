@@ -17,7 +17,7 @@
           <div class="flex flex-row items-center">
             <div class="w-4">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                <path fill-rule="evenodd" d="M4.293 15.707a1 1 0 010-1.414l5-5a1 1 0 011.414 0l5 5a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414 0zm0-6a1 1 0 010-1.414l5-5a1 1 0 011.414 0l5 5a1 1 0 01-1.414 1.414L10 5.414 5.707 9.707a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd" />
               </svg>
             </div>
           </div>
@@ -40,9 +40,11 @@
     <div class="px-4">
       <button phx-click="like"
               phx-target="<%= @myself %>"
-              class="h-10 w-10 rounded-full bg-purple-500 text-white text-center hover:bg-purple-300 focus:outline-none">
-        <div>
-          ▲
+              class="h-12 w-12 flex justify-center items-center rounded-full bg-purple-500 text-white text-center hover:shadow hover:bg-red-400 transition duration-200 ease-in-out focus:outline-none">
+        <div class="w-6">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd" />
+          </svg>
         </div>
       </button>
     </div>

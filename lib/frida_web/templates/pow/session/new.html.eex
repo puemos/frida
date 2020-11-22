@@ -1,4 +1,4 @@
-<div class="w-full sm:w-6/12 md:w-5/12 lg:w-4/12 xl:w-4/12 max-w-lg card">
+<div class="w-full sm:w-6/12 md:w-5/12 lg:w-4/12 xl:w-4/12 max-w-lg md:mt-6 card">
   <div class="">
     <h1 class="card-title">Welcome back!</h1>
     <h3 class="card-subtitle">Sign in to submit a feedback</h1>

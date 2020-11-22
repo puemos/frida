@@ -1,7 +1,7 @@
 <div>
-  <div class="flex flex-row py-6">
-    <div class="w-96">
-      <div class="max-w-md">
+  <div class="flex flex-col lg:flex-row py-6">
+    <div class="">
+      <div class="hidden lg:block lg:w-80">
         <%= live_component @socket,
           FridaWeb.FeedbackLive.FormComponent,
           id: :new,
@@ -11,7 +11,7 @@
       %>
       </div>
     </div>
-    <div class="mx-10 max-w-xl">
+    <div class="lg:ml-10">
       <div class="grid grid-cols-1 gap-3">
         <%= for feedback <- @feedbacks do %>
           <%= live_component @socket,

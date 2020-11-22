@@ -4,10 +4,6 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap");
 
-main {
-  @apply mt-24;
-}
-
 .alert:empty {
   @apply hidden;
 }
@@ -79,5 +75,5 @@ header {
 }
 
 .button-flat {
-  @apply button-base bg-white text-purple-700 hover:text-purple-500;
+  @apply button-base bg-transparent text-purple-700 hover:text-purple-500;
 }
