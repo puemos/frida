@@ -1,7 +1,50 @@
-<section class="container justify-center py-24 px-4 flex flex-row text-gray-700 transition-colors">
-  <%= for user <- @users do %>
-    <div class="py-4">
-      <div class="text-sm text-gray-800"><%= user.email %></div>
-    </div>
-  <% end %>
+<section class="container justify-center">
+  <table class="border-collapse table-auto w-full whitespace-no-wrap bg-white table-striped relative">
+    <thead>
+      <tr class="text-left">
+        <th class="bg-gray-100 sticky top-0 border-b border-gray-200 px-6 py-2 text-gray-600 font-bold tracking-wider uppercase text-xs"
+							>
+          Id
+        </th>
+        <th class="bg-gray-100 sticky top-0 border-b border-gray-200 px-6 py-2 text-gray-600 font-bold tracking-wider uppercase text-xs"
+							>
+          Email
+        </th>
+        <th class="bg-gray-100 sticky top-0 border-b border-gray-200 px-6 py-2 text-gray-600 font-bold tracking-wider uppercase text-xs"
+							>
+          Confirmed at
+        </th>
+        <th class="bg-gray-100 sticky top-0 border-b border-gray-200 px-6 py-2 text-gray-600 font-bold tracking-wider uppercase text-xs"
+							>
+          Role
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= for user <- @users do %>
+        <tr>
+          <td class="border-dashed border-t border-gray-200">
+            <span class="text-gray-700 px-6 py-3 flex items-center">
+              <%= user.id %>
+            </span>
+          </td>
+          <td class="border-dashed border-t border-gray-200">
+            <span class="text-gray-700 px-6 py-3 flex items-center">
+              <%= user.email %>
+            </span>
+          </td>
+          <td class="border-dashed border-t border-gray-200">
+            <span class="text-gray-700 px-6 py-3 flex items-center">
+              <%= humanize_date(user.email_confirmed_at) %>
+            </span>
+          </td>
+          <td class="border-dashed border-t border-gray-200">
+            <span class="text-gray-700 px-6 py-3 flex items-center">
+              <%= user.role %>
+            </span>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </section>

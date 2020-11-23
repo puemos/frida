@@ -2,6 +2,7 @@ defmodule FridaWeb.LiveHelpers do
   import Phoenix.LiveView.Helpers
   use Phoenix.LiveView
   alias FridaWeb.Credentials
+  alias FridaWeb.Router.Helpers, as: Routes
 
   @doc """
   Renders a component inside the `FridaWeb.ModalComponent` component.
@@ -32,7 +33,7 @@ defmodule FridaWeb.LiveHelpers do
     if socket.assigns.current_user do
       socket
     else
-      redirect(socket, to: Routes.pow_session_path())
+      redirect(socket, to: Routes.pow_session_path(socket, :new))
     end
   end
 
@@ -44,4 +45,9 @@ defmodule FridaWeb.LiveHelpers do
   @spec is_admin?(Frida.Users.User.t()) :: boolean()
   def is_admin?(%{role: "admin"}), do: true
   def is_admin?(_any), do: false
+
+  @spec humanize_date(DateTime.t()) :: String.t()
+  def humanize_date(date) do
+    "#{date.day}/#{date.month}/#{date.year} #{date.hour}:#{date.minute}"
+  end
 end
