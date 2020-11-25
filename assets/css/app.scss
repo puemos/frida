@@ -9,7 +9,7 @@
 }
 
 .alert.toast {
-  @apply z-40 fixed top-0 right-0 w-64 mt-20 shadow-xl cursor-pointer text-sm ease-out duration-300 text-gray-700 bg-white;
+  @apply rounded-lg p-4 z-40 fixed top-0 right-0 w-64 mt-20 shadow-xl cursor-pointer text-sm ease-out duration-300 text-gray-700 bg-white;
 }
 
 /* LiveView specific classes for your customizations */
