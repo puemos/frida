@@ -57,14 +57,10 @@ defmodule FridaWeb.Router do
   scope "/", FridaWeb do
     pipe_through [:browser, :protected]
 
+    live "/roadmap", RoadmapLive
+
     live "/posts", PostsLive
     live "/posts/:id", PostDetailsLive
 
-    live "/status", StatusLive.Index, :index
-    live "/status/new", StatusLive.Index, :new
-    live "/status/:id/edit", StatusLive.Index, :edit
-
-    live "/status/:id", StatusLive.Show, :show
-    live "/status/:id/show/edit", StatusLive.Show, :edit
   end
 end

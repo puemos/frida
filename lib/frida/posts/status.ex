@@ -7,6 +7,9 @@ defmodule Frida.Posts.Status do
     field :name, :string
     field :order, :integer
 
+    has_many :posts, Frida.Posts.Post
+
+
     timestamps()
   end
 

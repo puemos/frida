@@ -75,7 +75,10 @@ defmodule Frida.Posts do
 
   """
   def list_status do
-    Repo.all(Status)
+    Repo.all(
+      from f in Status,
+        preload: [:posts]
+    )
   end
 
   @doc """
