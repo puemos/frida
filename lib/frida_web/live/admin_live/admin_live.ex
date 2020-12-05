@@ -6,6 +6,7 @@ defmodule FridaWeb.AdminLive do
     socket =
       assign_defaults(session, socket)
       |> assign_users()
+      |> assign_status()
 
     {:ok, socket}
   end
@@ -13,5 +14,13 @@ defmodule FridaWeb.AdminLive do
   defp assign_users(socket) do
     users = Frida.Users.list_users()
     socket |> assign(:users, users)
+  end
+
+  defp assign_status(socket) do
+    status =
+      Frida.Posts.list_status()
+      |> Enum.sort_by(fn s -> s.order end)
+
+    socket |> assign(:status_list, status)
   end
 end
